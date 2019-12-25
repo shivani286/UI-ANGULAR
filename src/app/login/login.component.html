@@ -1,0 +1,33 @@
+<div>
+        
+        <div class="login-page">
+               
+                <div class="jumbotron" style="margin-top: 10px">
+                        <div *ngIf="showAlert" class="alert alert-danger"  role="alert">
+                                {{alertMsg}}
+                        </div>
+                        <form #frm="ngForm" (ngSubmit)="frm.form.valid && userLogin(frm)" name="form">
+                                <div class="row margin-20 form-group">
+                                        <label>Email ID</label>
+                                        <input type="email" name="userName" class="form-control" value=""
+                                                placeholder="Enter Email ID" [ngModel]="userName" />
+                                </div>
+                                <div class="row margin-20 form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control" value=""
+                                                placeholder="Enter Password" [ngModel]="password" />
+                                </div>
+                                <div class="row">
+                                        <div class="col-md-6">
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <button type="button" class="btn btn-link" routerLink="/signup">Sign
+                                                        Up</button>
+                                        </div>
+                                </div>
+                        </form>
+                </div>
+
+        </div>
+</div>

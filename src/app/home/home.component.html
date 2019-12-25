@@ -1,0 +1,102 @@
+<div class="home-page">
+  <button type="button" class="btn btn-success" style="margin: 20px 20px;" (click)="toogleModal()">ADD</button>
+  <button type="button" class="btn btn-link text-left" (click)="logout()" style="float:right; margin:18px;">LOG OUT</button>
+  <div class="" *ngIf="showModalFlag">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Employee Details</h5>
+        </div>
+        <div class="modal-body">
+          <div *ngIf="showAlert" class="alert alert-danger" style="margin-top: 10px;" role="alert">
+            {{alertMsg}}
+          </div>
+          <form #frm="ngForm" (ngSubmit)="addEmployee(frm)">
+            <div *ngIf="isAllDataEntered" class="alert alert-danger" role="alert">
+              Please Check the fields
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstName">First Name</label>
+                  <input type="text" class="form-control" name="firstName" [ngModel]="firstName" required
+                    pattern="[a-zA-Z]" #fName="ngModel">
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name</label>
+                  <input type="text" class="form-control" name="lastName" [ngModel]="lastName" required
+                    pattern="[a-zA-Z]" #lName="ngModel">
+                </div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <input type="text" class="form-control" name="address" [ngModel]="address" required #addres="ngModel">
+                </div>
+                <div class="form-group">
+                  <label for="emailId">Email Id</label>
+                  <input type="text" class="form-control" disabled={{disabledEmail}} name="emailId" [ngModel]="emailId"
+                    required #email="ngModel" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$">
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input type="number" class="form-control" name="phoneNumber" [ngModel]="phoneNumber" required
+                    pattern="[0-9]*" #number="ngModel">
+                </div>
+                <div class="form-group">
+                  <label for="dateOfBirth">Date Of Birth</label>
+                  <input type="text" class="form-control" #dob="ngModel" name="dateOfBirth" [ngModel]="dateOfBirth"
+                    required >
+                </div>
+                <div class="form-group">
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" name="city" #citi="ngModel" [ngModel]="city" required
+                    pattern="[a-zA-Z]">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success" style="margin: 20px 20px;"
+              (click)="addEmployee(frm)">Save</button>
+            <button type="button" class="btn btn-danger" style="margin: 20px 20px;"
+              (click)="toogleModal()">Cancel</button>
+            </div>
+            
+          </form>
+        </div>
+        <div class="modal-footer">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email ID</th>
+        <th scope="col">Address</th>
+        <th scope="col">Date Of Birth</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">City</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let data of empolyeeData">
+      <tr>
+
+        <td>{{data.firstName}}</td>
+        <td>{{data.lastName}}</td>
+        <td>{{data.emailId}}</td>
+        <td>{{data.address}}</td>
+        <td>{{data.dateOfBirth}}</td>
+        <td>{{data.phoneNumber}}</td>
+        <td>{{data.city}}</td>
+        <td>
+          <button type="button" class="btn btn-primary" style="margin-right: 10px"
+            (click)="updateEmployeeData(data)">Edit</button>
+          <button type="button" class="btn btn-danger" (click)="deleteEmployeeData(data)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
