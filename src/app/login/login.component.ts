@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
     else {
       if (this.isEmailValid === true) {
         this.response = this.loginService.login(data.value)
-        this.loginService.login(data.value).then((data) => {
+            this.loginService.login(data.value).then((data) => {
           sessionStorage.setItem("user", JSON.stringify(data));
           this.response = data;
           this.router.navigate(['/home']);

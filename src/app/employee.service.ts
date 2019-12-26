@@ -11,7 +11,7 @@ export class EmployeeService {
 
 
   getAllEmployeeData(id) {
-    return this.http.get(`http://192.168.43.249:8080/manageemployeedetail/employee/all/by/` + id).toPromise().then((response) => {
+    return this.http.get(`http://192.168.1.16:8080/manager-employee-assignment/api/v1.0/employees/` + id).toPromise().then((response) => {
       if (response != null) {
         console.log("res", response)
         return response;
@@ -24,7 +24,7 @@ export class EmployeeService {
   }
 
   deleteEmployee(id) {
-    return this.http.delete('http://192.168.43.249:8080/manageemployeedetail/employee/delete/' + id).toPromise().then((response) => {
+    return this.http.delete('http://192.168.1.16:8080/manager-employee-assignment/api/v1.0/delete/employee/' + id).toPromise().then((response) => {
       if (response != null) {
         return response;
       } else {
@@ -38,7 +38,7 @@ export class EmployeeService {
     // this.employeeData.push(data);
     if (data.employeeId) {
       {
-        return this.http.put('http://192.168.43.249:8080/manageemployeedetail/employee/update/' + data.employeeId, data).toPromise().then((response) => {
+        return this.http.put('http://192.168.1.16:8080/mmanager-employee-assignment/api/v1.0/update/employee/' + data.employeeId, data).toPromise().then((response) => {
           if (response != null) {
             return response;
           }
@@ -49,7 +49,7 @@ export class EmployeeService {
         });
       }
     } else {
-      return this.http.post(`http://192.168.43.249:8080/manageemployeedetail/employee/add`, data).toPromise().then((response) => {
+      return this.http.post(`http://192.168.1.16:8080/manager-employee-assignment/api/v1.0/create/employee`, data).toPromise().then((response) => {
         if (response != null) {
           return response;
         }

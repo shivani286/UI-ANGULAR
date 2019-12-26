@@ -10,7 +10,7 @@ export class LoginService {
   body: object = {}
 
   login(data) {
-    this.url = "http://192.168.43.249:8080/manageemployeedetail/manager/login";
+    this.url = "http://192.168.1.16:8080/manager-employee-assignment/api/v1.0/login";
     this.body = {
       userName: data.userName,
       password: data.password

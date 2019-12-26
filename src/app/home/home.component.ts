@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
   }
 
   addEmployee(form) {
-    this.checkEmailValdation(form.value.emailId)
+    this.checkEmailValdation(form.value.emailId || this.emailId)
     this.checkPhoneNumberValidation(form.value.phoneNumber)
     if (form.value.firstName === "" || form.value.lastName === "" || form.value.emailId === "" || form.value.phoneNumber === "" || form.value.dateOfBirth === "" || form.value.address === "" || form.value.city === "") {
       this.showAlert = true;
@@ -108,7 +108,7 @@ export class HomeComponent implements OnInit {
       if (this.isEmailValid === true && this.isPhoneNumberValid) {
         this.showAlert = false;
         this.alertMsg = "";
-        form.value.userId = this.id;
+        form.value.mangerId = this.id;
 
         if (this.employeeId != null || this.employeeId != undefined) {
           form.value.employeeId = this.employeeId;
@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
   getAllEmployeeData() {
     this.user = JSON.parse(sessionStorage.getItem("user"));
     if(this.user!=null){
-    this.id = this.user.userId
+    this.id = this.user.employeeId
       this.employeeService.getAllEmployeeData(this.id).then((data) => {
         this.empolyeeData = data;
       }).catch((error) => {
