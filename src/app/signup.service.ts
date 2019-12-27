@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class SignupService {
 
 signup(data){
- return this.http.post("http://192.168.1.16:8080/manager-employee-assignment/api/v1.0/registration",data).toPromise().then((response)=>{
+ return this.http.post("http://localhost:8080/manager-employee-assignment/api/v1.0/registration",data).toPromise().then((response)=>{
     if (response != null) {
       return response;
     }
